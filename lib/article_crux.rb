@@ -82,7 +82,7 @@ module ArticleCrux
       clip_title = og_title[0]["content"]
     else
       page_title = doc.search("//title")[0]
-      clip_title = page_title.text if !str_blank?(page_title)
+      clip_title = page_title.text if !page_title.nil?
     end
 
     tags = []
