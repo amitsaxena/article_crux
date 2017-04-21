@@ -1,8 +1,6 @@
 # ArticleCrux
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/article_crux`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The gem scrapes HTML of a URL and returns the title and cover image which most likey represents the article. It also returns an array of tags. The gem can be useful in scenarios where you want to display a short summary of the article, before the end-user lands on the actual article. 
 
 ## Installation
 
@@ -21,21 +19,25 @@ Or install it yourself as:
     $ gem install article_crux
 
 ## Usage
+<pre lang="ruby"><code>
+require 'article_crux'
 
-TODO: Write usage instructions here
+ArticleCrux.fetch("https://techcrunch.com/2017/04/18/facebook-announces-react-fiber-a-rewrite-of-its-react-framework/")
+=> {:image=>"https://tctechcrunch2011.files.wordpress.com/2017/04/image-uploaded-from-ios-1.jpg?w=764&h=400&crop=1", :title=>"Facebook announces React Fiber, a rewrite of its React framework", :tags=>["developers", "F82017", "Facebook", "Javascript", "react", "React Fiber"]}
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# In case you want to pass a custom user Agent (server can whitelist specific User agents, as well as you might me blocked, and at times a server might return a different for different user agent)
+user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0"
+ArticleCrux.fetch("https://techcrunch.com/2017/04/18/facebook-announces-react-fiber-a-rewrite-of-its-react-framework/", user_agent)
+=> {:image=>"https://tctechcrunch2011.files.wordpress.com/2017/04/image-uploaded-from-ios-1.jpg?w=764&h=400&crop=1", :title=>"Facebook announces React Fiber, a rewrite of its React framework", :tags=>["developers", "F82017", "Facebook", "Javascript", "react", "React Fiber"]}
+</code></pre>
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/article_crux.
+Bug reports and pull requests are welcome on GitHub at https://github.com/amitsaxena/article_crux.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
 
