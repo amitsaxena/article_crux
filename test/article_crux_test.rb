@@ -5,7 +5,8 @@ class ArticleCruxTest < Minitest::Test
     refute_nil ::ArticleCrux::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_fetch_for_example_dot_com
+    res = ArticleCrux.fetch("http://example.com/")
+    assert_equal("Example Domain", res[:title])
   end
 end
